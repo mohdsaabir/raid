@@ -7,7 +7,7 @@ from reportlab.lib.enums import TA_CENTER
 
 
 
-with pdfplumber.open("Account_Statement_1243XXXXXX6617.pdf", password="MUHA2708") as pdf:
+with pdfplumber.open("Account_Statement_1243XXXXXX6617.pdf", password="*****") as pdf:
     total_no_of_pages = len(pdf.pages)
     keywords = ['UPI']
     total_withdrawals=0
