@@ -7,7 +7,7 @@ from reportlab.lib.enums import TA_CENTER
 
 
 
-with pdfplumber.open("Account_Statement_1243XXXXXX6617.pdf", password="*****") as pdf:
+with pdfplumber.open("Account_Statement_1243XXXXXX6617(1) (1).pdf", password="MUHA2708") as pdf:
     total_no_of_pages = len(pdf.pages)
     keywords = ['UPI']
     total_withdrawals=0
@@ -40,7 +40,7 @@ with pdfplumber.open("Account_Statement_1243XXXXXX6617.pdf", password="*****") a
 
 
 
-    def create_pdf_report(total_withdrawals,total_deposits,final_data,filename="Filtered_Account_Statement.pdf"):
+    def create_pdf_report(total_withdrawals,total_deposits,final_data,filename="Filtered_Account_Statement(1).pdf"):
 
         heading_style = ParagraphStyle(
             name="Heading",
