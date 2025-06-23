@@ -7,7 +7,7 @@ from reportlab.lib.enums import TA_CENTER
 
 
 
-with pdfplumber.open("Account_Statement_1243XXXXXX6617(1) (1).pdf", password="MUHA2708") as pdf:
+with pdfplumber.open("Account_Statement_1243XXXXXX6617(1) (1).pdf", password="****") as pdf:
     total_no_of_pages = len(pdf.pages)
     keywords = ['UPI']
     total_withdrawals=0
@@ -22,12 +22,14 @@ with pdfplumber.open("Account_Statement_1243XXXXXX6617(1) (1).pdf", password="MU
                 content[3] = content[3].replace('\n','')
                 content[5] = content[5].replace('\n',' ')
                 content[-1] = content[-1].replace('\n','')
+                content.pop(-2)
                 final_data.append(content)
             elif row == 1 and page_num == 0 :
                 continue
             else:
                 if all(keyword not in content[2] for keyword in keywords):
                     content[2]=content[2].replace('\n','')
+                    content.pop(-2)
                     try:
                         if content[6]!='':
                             total_withdrawals += float(content[6])
@@ -37,7 +39,6 @@ with pdfplumber.open("Account_Statement_1243XXXXXX6617(1) (1).pdf", password="MU
                             final_data.append(content)
                     except ValueError:    
                         final_data.append(content)
-
 
 
     def create_pdf_report(total_withdrawals,total_deposits,final_data,filename="Filtered_Account_Statement(1).pdf"):
@@ -71,7 +72,7 @@ with pdfplumber.open("Account_Statement_1243XXXXXX6617(1) (1).pdf", password="MU
         normal_style.leading = 7
 
         # Column widths (adjust if needed)
-        col_widths = [50, 50, 160, 40, 55, 40, 50, 50, 60, 30]
+        col_widths = [50, 50, 160, 40, 55, 40, 50, 50, 30]
 
         # Convert all cells to Paragraphs for wrapping
         processed_data = []

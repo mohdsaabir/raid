@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RAID - Filter Federal Bank Statement</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="split-layout">
+        <!-- Left branding text -->
+        <div class="left-panel">
+            <h1>RAID</h1>
+            <p>Your personal assistant to filter bank statements with ease.</p>
+            <p>Upload your Federal Bank PDF and get clean records in seconds.</p>
+        </div>
+
+        <!-- Right centered form -->
+        <div class="right-panel">
+            <div class="form-box">
+                <h3>Federal Bank Statement Filter</h3>
+
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    <div class="alert">{{ messages[0] }}</div>
+                  {% endif %}
+                {% endwith %}
+
+                <form method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="pdf_file">Upload PDF Statement</label>
+                        <input type="file" name="pdf_file" id="pdf_file" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">PDF Password</label>
+                        <input type="password" name="password" id="password" required>
+                    </div>
+                    <button type="submit">Generate Filtered PDF</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>
